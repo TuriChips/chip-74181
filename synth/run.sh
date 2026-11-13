@@ -8,8 +8,9 @@ OUT=synth/report.txt
 yosys -q -l synth/yosys.log -p "
 read_verilog $(echo $SRC);
 hierarchy -check -top top;
-proc; flatten; opt; techmap; opt; abc -g AND,NAND,OR,NOR,XOR,XNOR,ANDNOT,ORNOT,MUX; opt_clean;
+proc; flatten; opt; techmap; opt; abc -g AND,NAND,OR,NOR,XOR,XNOR,ANDNOT,ORNOT,MUX; opt_clean -purge;
 check -assert;
+write_verilog -noattr synth/top_gl.v;
 tee -o $OUT stat;
 tee -a $OUT ltp -noff
 "

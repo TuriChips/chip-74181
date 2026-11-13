@@ -25,8 +25,9 @@
 -- Running command `
 read_verilog rtl/datapath/alu181_carry.v rtl/datapath/alu181_pg.v rtl/datapath/alu181_sum.v rtl/top.v;
 hierarchy -check -top top;
-proc; flatten; opt; techmap; opt; abc -g AND,NAND,OR,NOR,XOR,XNOR,ANDNOT,ORNOT,MUX; opt_clean;
+proc; flatten; opt; techmap; opt; abc -g AND,NAND,OR,NOR,XOR,XNOR,ANDNOT,ORNOT,MUX; opt_clean -purge;
 check -assert;
+write_verilog -noattr synth/top_gl.v;
 tee -o synth/report.txt stat;
 tee -a synth/report.txt ltp -noff
 ' --
@@ -315,21 +316,28 @@ Removing temp directory.
 
 12. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \top..
-Removed 0 unused cells and 57 unused wires.
-<suppressed ~3 debug messages>
+Removed 0 unused cells and 81 unused wires.
+<suppressed ~27 debug messages>
 
 13. Executing CHECK pass (checking for obvious problems).
 Checking module top...
 Found and reported 0 problems.
 
-14. Printing statistics.
+14. Executing Verilog backend.
+
+14.1. Executing BMUXMAP pass.
+
+14.2. Executing DEMUXMAP pass.
+Dumping module `\top'.
+
+15. Printing statistics.
 
 === top ===
 
-   Number of wires:                 74
-   Number of wire bits:            131
-   Number of public wires:          34
-   Number of public wire bits:      91
+   Number of wires:                 50
+   Number of wire bits:             62
+   Number of public wires:          10
+   Number of public wire bits:      22
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -343,7 +351,7 @@ Found and reported 0 problems.
      $_OR_                           5
      $_XNOR_                         4
 
-15. Executing LTP pass (find longest path).
+16. Executing LTP pass (find longest path).
 
 Longest topological path in top (length=11):
     0: \s [1]
@@ -359,6 +367,6 @@ Longest topological path in top (length=11):
    10: \f [3] (via $abc$222$auto$blifparse.cc:386:parse_blif$256)
    11: \aeqb (via $abc$222$auto$blifparse.cc:386:parse_blif$259)
 
-End of script. Logfile hash: 79eab744eb, CPU: user 0.05s system 0.00s, MEM: 12.57 MB peak
+End of script. Logfile hash: a85fe62592, CPU: user 0.04s system 0.00s, MEM: 12.82 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 63% 1x abc (0 sec), 9% 6x read_verilog (0 sec), ...
+Time spent: 56% 1x abc (0 sec), 11% 6x read_verilog (0 sec), ...
