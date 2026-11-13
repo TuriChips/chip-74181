@@ -1,0 +1,37 @@
+
+14. Printing statistics.
+
+=== top ===
+
+   Number of wires:                 74
+   Number of wire bits:            131
+   Number of public wires:          34
+   Number of public wire bits:      91
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 48
+     $_ANDNOT_                       1
+     $_AND_                         12
+     $_MUX_                          8
+     $_NAND_                        11
+     $_NOR_                          3
+     $_ORNOT_                        4
+     $_OR_                           5
+     $_XNOR_                         4
+
+15. Executing LTP pass (find longest path).
+
+Longest topological path in top (length=11):
+    0: \s [1]
+    1: $abc$222$new_n23_ (via $abc$222$auto$blifparse.cc:386:parse_blif$223)
+    2: $abc$222$new_n24_ (via $abc$222$auto$blifparse.cc:386:parse_blif$224)
+    3: $abc$222$new_n35_ (via $abc$222$auto$blifparse.cc:386:parse_blif$235)
+    4: $abc$222$new_n36_ (via $abc$222$auto$blifparse.cc:386:parse_blif$236)
+    5: $abc$222$new_n44_ (via $abc$222$auto$blifparse.cc:386:parse_blif$244)
+    6: $abc$222$new_n45_ (via $abc$222$auto$blifparse.cc:386:parse_blif$245)
+    7: $abc$222$new_n53_ (via $abc$222$auto$blifparse.cc:386:parse_blif$253)
+    8: $abc$222$new_n54_ (via $abc$222$auto$blifparse.cc:386:parse_blif$254)
+    9: $abc$222$new_n55_ (via $abc$222$auto$blifparse.cc:386:parse_blif$255)
+   10: \f [3] (via $abc$222$auto$blifparse.cc:386:parse_blif$256)
+   11: \aeqb (via $abc$222$auto$blifparse.cc:386:parse_blif$259)
