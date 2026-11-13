@@ -1,0 +1,3 @@
+PASS top_table (4-state)
+PASS top_exhaustive (4-state)
+PASS top_cascade (4-state)

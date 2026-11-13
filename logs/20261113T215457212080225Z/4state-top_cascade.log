@@ -1,0 +1,2 @@
+PASS top_cascade: 131072 checks, 0 mismatches
+tb/top_cascade/tb.sv:47: $finish called at 131072 (1s)
