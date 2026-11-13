@@ -1,0 +1,5 @@
+commit: 56390ebe462c15d4dbfcd7ac01fac9619f631bad (origin/main)
+run: 20261113T183325Z UTC
+verilator: Verilator 5.020 2024-01-01 rev (Debian 5.020-1)
+iverilog: Icarus Verilog version 12.0 (stable) ()
+python3: Python 3.12.3

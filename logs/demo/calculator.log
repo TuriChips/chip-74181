@@ -1,0 +1,11 @@
+8-bit calculator from two 74181 chips
+op           a,   b      result
+add            25,  17  ->   42  (0x2a)  carry-out=0
+add           200, 100  ->   44  (0x2c)  carry-out=1
+subtract      100,  58  ->   42  (0x2a)  carry-out=1
+subtract        5,   9  ->  252  (0xfc)  carry-out=0
+AND           240,  60  ->   48  (0x30)
+OR            240,  15  ->  255  (0xff)
+XOR           170, 255  ->   85  (0x55)
+NOT A          15,   0  ->  240  (0xf0)
+sw/calculator.sv:43: $finish called at 8 (1s)
