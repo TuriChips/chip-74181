@@ -16,6 +16,8 @@ Every check compares against `ref/ref74181.py`, which is itself checked by `self
 
 **Unexercised behaviours: none.**
 
+Evidence on main: `logs/random/main-56390eb/` (all checks PASS, 0 mismatches, 0 X/Z).
+
 Known limits (not spec behaviours, listed so nobody over-reads the result):
 - Cascade X/Z is checked only in 2-state Verilator. Single-chip X/Z is covered in Icarus, and the cascade is just two of the same chip.
 - Acceptance test 2 (the TI datasheet table) is Quinn's (#4). The ref selftest checks §3 against **our** §4 copy, not against TI's document.

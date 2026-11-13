@@ -1,0 +1,3 @@
+selftest: 16384 cases, mismatches=0
+selftest cascade: 65536 pairs x (add, add+1, sub), mismatches=0
+PASS
