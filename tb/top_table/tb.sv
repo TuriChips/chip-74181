@@ -80,7 +80,7 @@ module tb;
               else   exp_f = t_arith(s, a, b) + {3'b000, ~cn_n};
               checks++;
               // B8: fully driven inputs give no X/Z on any output.
-              if ($isunknown({f, cn4_n, x, y, aeqb})) fail("B8 X/Z on output");
+              if ((^{f, cn4_n, x, y, aeqb} === 1'bx)) fail("B8 X/Z on output");
               else begin
                 if (f !== exp_f) fail("B1 f mismatch");
                 // B5: aeqb is 1 exactly when f == 1111.

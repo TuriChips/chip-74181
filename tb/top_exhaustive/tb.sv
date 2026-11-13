@@ -32,7 +32,7 @@ module tb;
       ey     = ~(~p[3] | (~g[3] & ~p[2]) | (~g[3] & ~g[2] & ~p[1]) | (~g[3] & ~g[2] & ~g[1] & ~p[0]));
       eaeqb  = &ef;
       checks++;
-      if ($isunknown({f, cn4_n, x, y, aeqb})) begin
+      if ((^{f, cn4_n, x, y, aeqb} === 1'bx)) begin
         errors++;
         if (errors <= 10) $display("FAIL B8 X/Z: a=%b b=%b s=%b m=%b cn_n=%b", a, b, s, m, cn_n);
       end else if (f !== ef || cn4_n !== ecn4_n || x !== ex || y !== ey || aeqb !== eaeqb) begin
