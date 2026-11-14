@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Rook's exhaustive comparison: RTL vs ref model, all 16,384 inputs, in two simulators,
-# plus the B7 two-chip cascade on all 2^22 inputs (Verilator).
+# plus the B7 two-chip cascade on all 2^22 inputs (Verilator), and the same checks on the
+# synthesized netlist synth/top_gl.v when it exists.
 #   Verilator (2-state, same flags as the toolchain) and Icarus (4-state, so B8's X/Z check is real).
 # Usage: tests/random/run.sh      Logs: logs/<run>/random-*.log  (logs/latest -> run)
 # If RUN_DIR is set (toolchain run_tests.sh), logs go there and logs/latest is left alone.
@@ -26,4 +27,19 @@ step exhaustive-iverilog "$run/random-exhaustive-iverilog.log" bash -c \
 # B7 cascade, 2^22 cases. Verilator only: Icarus takes minutes here, and X/Z is already covered above.
 step cascade-verilator "$run/random-cascade-verilator.log" bash -c \
   'verilator --binary --timing -Wall -Wno-DECLFILENAME -Wno-UNUSEDSIGNAL --Mdir build/random/vlc -f tests/random/cascade/files.f --top tb && build/random/vlc/Vtb'
+# Gate level: the synthesized netlist (Petra, synth/top_gl.v) against the same vectors.
+# Icarus for the 16,384 single-chip cases (4-state), Verilator for the 2^22 cascade.
+# Skipped, and reported as SKIP rather than PASS, when there is no netlist.
+GL=synth/top_gl.v
+if [ -f "$GL" ]; then
+  mkdir -p build/random/gl
+  printf '%s\ntests/random/exhaustive/tb.sv\n' "$GL" > build/random/gl/exhaustive.f
+  printf '%s\ntests/random/cascade/tb.sv\n'    "$GL" > build/random/gl/cascade.f
+  step gl-exhaustive-iverilog "$run/random-gl-exhaustive-iverilog.log" bash -c \
+    'iverilog -g2012 -o build/random/gl/iv.vvp -c build/random/gl/exhaustive.f && vvp -n build/random/gl/iv.vvp'
+  step gl-cascade-verilator "$run/random-gl-cascade-verilator.log" bash -c \
+    'verilator --binary --timing -Wall -Wno-DECLFILENAME -Wno-UNUSEDSIGNAL --Mdir build/random/gl/vlc -f build/random/gl/cascade.f --top tb && build/random/gl/vlc/Vtb'
+else
+  echo "SKIP gate-level (no $GL)"
+fi
 exit $ok
