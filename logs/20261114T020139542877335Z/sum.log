@@ -1,5 +1,0 @@
-make[1]: Entering directory '/home/turichips/work/juno-74181/build/sum'
-make[1]: Nothing to be done for 'default'.
-make[1]: Leaving directory '/home/turichips/work/juno-74181/build/sum'
-PASS sum: 2592 checks, 0 mismatches
-- tb/sum/tb.sv:25: Verilog $finish

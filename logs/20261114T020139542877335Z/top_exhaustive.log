@@ -1,5 +1,0 @@
-make[1]: Entering directory '/home/turichips/work/juno-74181/build/top_exhaustive'
-make[1]: Nothing to be done for 'default'.
-make[1]: Leaving directory '/home/turichips/work/juno-74181/build/top_exhaustive'
-PASS top_exhaustive: 28672 checks, 0 mismatches
-- tb/top_exhaustive/tb.sv:62: Verilog $finish

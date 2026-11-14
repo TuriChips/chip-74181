@@ -1,5 +1,0 @@
-make[1]: Entering directory '/home/turichips/work/juno-74181/build/pg'
-make[1]: Nothing to be done for 'default'.
-make[1]: Leaving directory '/home/turichips/work/juno-74181/build/pg'
-PASS pg: 4096 checks, 0 mismatches
-- tb/pg/tb.sv:23: Verilog $finish
