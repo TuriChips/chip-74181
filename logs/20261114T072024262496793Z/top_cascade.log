@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/turichips/work/homer-74181/build/top_cascade'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/turichips/work/homer-74181/build/top_cascade'
+PASS top_cascade: 131072 checks, 0 mismatches
+- tb/top_cascade/tb.sv:47: Verilog $finish

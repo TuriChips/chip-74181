@@ -1,0 +1,6 @@
+make[1]: Entering directory '/home/turichips/work/homer-74181/build/random/vl'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/turichips/work/homer-74181/build/random/vl'
+exhaustive: cases=16384 mismatches=0 xz=0
+PASS
+- tests/random/exhaustive/tb.sv:34: Verilog $finish
