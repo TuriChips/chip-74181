@@ -13,7 +13,7 @@ make test          # every test, logs go to logs/<timestamp>/
 ## Repo map
 `docs/spec.md` spec, `docs/blocks.md` block split, `rtl/` Verilog, `tb/` and `tests/` tests, `ref/` reference model, `synth/` synthesis, `sw/` demo, `logs/` evidence.
 
-**Status: RELEASED 2026-11-14**, signed off by Sai. Every row below has a log from one run on main (920d4f3, toolchain v0.6). Reviewed by Vera and Rook.
+**Status: RELEASED 2026-11-14**, signed off by Sai. Every row below has a log from one run on main (920d4f3, toolchain v0.6). Reviewed by Igris and Beru.
 
 ## What this is
 The TI 74181 (1970) is a 4-bit ALU on one chip: 16 logic and 16 arithmetic functions, selected by S0–S3 and M (arithmetic functions also take the carry input). It was our Phase 0 dry run: the whole pipeline (spec, RTL, tests, synthesis, demo, write-up) on a chip small enough to check exhaustively. Simulation only; nothing was manufactured.
@@ -31,10 +31,10 @@ One `make test` run on main commit `920d4f3` (`logs/20261114T072024262496793Z/su
 | Acceptance 2: `top_table`, TI function table and directed B1–B6 (21,249 checks) | 0 mismatches | `logs/20261114T072024262496793Z/top_table.log` |
 | Acceptance 3: `top_cascade`, two cascaded chips (131,072 checks) | 0 mismatches | `logs/20261114T072024262496793Z/top_cascade.log` |
 | B8, no X/Z: the same three top-level tests re-run in Icarus (4-state). Verilator is 2-state, so only this run can fail the check | 0 mismatches | `logs/20261114T072024262496793Z/4state-top_table.log`, `4state-top_exhaustive.log`, `4state-top_cascade.log` |
-| Rook's exhaustive check, all 16,384 combinations vs the reference model | 0 mismatches, 0 X/Z (Icarus) | `logs/20261114T072024262496793Z/random-exhaustive-iverilog.log` |
+| Beru's exhaustive check, all 16,384 combinations vs the reference model | 0 mismatches, 0 X/Z (Icarus) | `logs/20261114T072024262496793Z/random-exhaustive-iverilog.log` |
 | Same in Verilator | 0 mismatches (X/Z not meaningful in Verilator) | `logs/20261114T072024262496793Z/random-exhaustive-verilator.log` |
-| Rook's cascade check: two cascaded chips, every function, all 4,194,304 input combinations | 0 mismatches | `logs/20261114T072024262496793Z/random-cascade-verilator.log` |
-| Gate-level: Rook's exhaustive check on the synthesized netlist `synth/top_gl.v`, all 16,384 combinations (Icarus) | 0 mismatches, 0 X/Z | `logs/20261114T072024262496793Z/random-gl-exhaustive-iverilog.log` |
+| Beru's cascade check: two cascaded chips, every function, all 4,194,304 input combinations | 0 mismatches | `logs/20261114T072024262496793Z/random-cascade-verilator.log` |
+| Gate-level: Beru's exhaustive check on the synthesized netlist `synth/top_gl.v`, all 16,384 combinations (Icarus) | 0 mismatches, 0 X/Z | `logs/20261114T072024262496793Z/random-gl-exhaustive-iverilog.log` |
 | Gate-level: cascade check on the netlist, all 4,194,304 combinations (Verilator) | 0 mismatches (X/Z not meaningful in Verilator) | `logs/20261114T072024262496793Z/random-gl-cascade-verilator.log` |
 | Reference model self-test | 0 mismatches | `logs/20261114T072024262496793Z/random-ref-selftest.log` |
 
@@ -58,7 +58,7 @@ OR            240,  15  ->  255  (0xff)
 XOR           170, 255  ->   85  (0x55)
 NOT A          15,   0  ->  240  (0xf0)
 ```
-The demo is a show-and-tell, not a test. Rook checked all 8 lines against plain 8-bit arithmetic (comment on issue #7). On the subtract lines `carry-out=1` means *no borrow*. The tests above are what judge the chip.
+The demo is a show-and-tell, not a test. Beru checked all 8 lines against plain 8-bit arithmetic (comment on issue #7). On the subtract lines `carry-out=1` means *no borrow*. The tests above are what judge the chip.
 
 ## What went wrong along the way
 - The first draft of the spec used the wrong equations on pins 15 and 17 (it called them P̄ and Ḡ, which only applies to active-low data). Vera caught it while checking the spec against the datasheet logic diagram (`docs/spec.md` section 9).
