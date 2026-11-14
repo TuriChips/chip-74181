@@ -19,4 +19,4 @@ Tools: OpenROAD 2.0_3175 (2022 build), KLayout 0.30.13, sky130A PDK 1.0.471 (pin
 | Router DRC violations | 0 | `sky130/logs/route_drc.rpt` |
 
 Not done: timing closure, power, signoff DRC (KLayout/Magic) and LVS. The router's own DRC count is not a signoff. Power is met1 rails plus met4 straps, with 5 `tapvpwrvgnd_1` tap cells (physical only, not in `top_sky130.v`), no fill or decap; fine for a picture and a first run, not for fabrication.
-The mapped netlist `sky130/top_sky130.v` has not yet been through the exhaustive test. That needs Beru's gate-level run with the sky130 cell models.
+The mapped netlist `sky130/top_sky130.v` passes the gate-level check against the reference model, using the pinned PDK functional cell models in Icarus: all 16,384 inputs (`cases=16384 mismatches=0 xz=0`, `logs/20261114T091952Z/random-gl-sky130-exhaustive-iverilog.log`) and the two-chip cascade over all 4,194,304 inputs (`mismatches=0 xz=0`, `logs/20261114T091952Z/random-gl-sky130-cascade-iverilog.log`). Tap cells are physical only, so they do not change this result.
