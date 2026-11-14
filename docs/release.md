@@ -1,6 +1,6 @@
 # 74181 4-bit ALU: release write-up
 
-**Status: DRAFT.** Every row below now has a log from one run on main. Not marked RELEASED until Vera and Sai have reviewed it.
+**Status: RELEASED 2026-11-14**, pending Sai's sign-off on this PR. Every row below has a log from one run on main (6de6829, toolchain v0.5). Reviewed by Vera and Rook.
 
 ## What this is
 The TI 74181 (1970) is a 4-bit ALU on one chip: 16 logic and 16 arithmetic functions, selected by S0–S3 and M (arithmetic functions also take the carry input). It was our Phase 0 dry run: the whole pipeline (spec, RTL, tests, synthesis, demo, write-up) on a chip small enough to check exhaustively. Simulation only; nothing was manufactured.
