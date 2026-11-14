@@ -73,13 +73,14 @@ We also placed and routed the chip on the open sky130 process with OpenROAD, and
 | Routed wire length, vias | 934 µm, 354 | `synth/sky130/logs/openroad.log` |
 | Longest path (typical corner, unconstrained) | 1.014 ns, 6 cells | `synth/sky130/logs/openroad.log` |
 | Router DRC violations | 0 (the router's own count, not a signoff) | `synth/sky130/logs/openroad.log` |
+| Gate-level check of the sky130 netlist (PDK functional cell models, Icarus): all 16,384 inputs, and the 4,194,304-input cascade | 0 mismatches, 0 X/Z | `logs/20261114T091952Z/random-gl-sky130-exhaustive-iverilog.log`, `random-gl-sky130-cascade-iverilog.log` |
 
-This is a first run, not a manufacturable layout: no timing closure, no power analysis, no signoff DRC or LVS, and no tap cells. The mapped sky130 netlist has not been through the exhaustive test yet. Nothing was manufactured.
+This is a first run, not a manufacturable layout: no timing closure, no power analysis, no signoff DRC or LVS, and no tap cells. Nothing was manufactured.
 
 ## What went wrong along the way
 - The first draft of the spec used the wrong equations on pins 15 and 17 (it called them P̄ and Ḡ, which only applies to active-low data). Igris caught it while checking the spec against the datasheet logic diagram (`docs/spec.md` section 9).
 - Verification found **no RTL bugs**: the RTL matched the spec on the first run. It did find holes in the safety nets, all fixed before release: chip-74181#15 (the B8 X/Z check could never fail under 2-state Verilator; fixed by the Icarus run), toolchain#3 review (stale random logs could be attached to a new run), toolchain#10 (the chip's toolchain pin was ignored in CI), toolchain#13 (the v0.4 tag's CI actually ran v0.3).
 
 ## Not done
-- Signoff for the layout above (timing closure, power, signoff DRC, LVS) and an exhaustive test of the sky130 netlist.
+- Signoff for the layout above (timing closure, power, signoff DRC, LVS).
 - Electrical behaviour and the 74182 lookahead chip are out of scope (spec section 1).
