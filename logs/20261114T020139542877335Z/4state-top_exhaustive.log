@@ -1,0 +1,2 @@
+PASS top_exhaustive: 28672 checks, 0 mismatches
+tb/top_exhaustive/tb.sv:62: $finish called at 32768 (1s)

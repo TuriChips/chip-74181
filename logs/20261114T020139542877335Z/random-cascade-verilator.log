@@ -1,0 +1,6 @@
+make[1]: Entering directory '/home/turichips/work/juno-74181/build/random/vlc'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/turichips/work/juno-74181/build/random/vlc'
+cascade: cases=4194304 mismatches=0 xz=0
+PASS
+- tests/random/cascade/tb.sv:36: Verilog $finish

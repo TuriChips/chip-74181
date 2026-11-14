@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/turichips/work/juno-74181/build/top_table'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/turichips/work/juno-74181/build/top_table'
+PASS top_table: 21249 checks, 0 mismatches
+- tb/top_table/tb.sv:124: Verilog $finish
