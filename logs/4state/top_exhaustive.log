@@ -1,12 +1,2 @@
-FAIL B8 X/Z: a=0000 b=0000 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0001 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0010 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0011 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0100 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0101 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0110 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=0111 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=1000 s=0000 m=0 cn_n=0
-FAIL B8 X/Z: a=0000 b=1001 s=0000 m=0 cn_n=0
-FATAL: tb/top_exhaustive/tb.sv:61: FAIL top_exhaustive: 14080 mismatches in 28672 checks
-       Time: 32768  Scope: tb
+PASS top_exhaustive: 28672 checks, 0 mismatches
+tb/top_exhaustive/tb.sv:62: $finish called at 32768 (1s)
