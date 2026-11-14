@@ -8,6 +8,7 @@ read_verilog $::env(NETLIST)
 link_design top
 initialize_floorplan -utilization 40 -aspect_ratio 1 -core_space 5 -site unithd
 make_tracks
+tapcell -distance 14 -tapcell_master sky130_fd_sc_hd__tapvpwrvgnd_1
 puts "== die/core"
 puts "die [ord::get_die_area] core [ord::get_core_area]"
 place_pins -hor_layers met3 -ver_layers met2

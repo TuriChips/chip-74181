@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 D=synth/sky130; mkdir -p $D/logs; W=$(mktemp -d)
 S=$PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd
-python3 -I $D/filter_lib.py $S/lib/sky130_fd_sc_hd__tt_025C_1v80.lib $W/f.lib | tee $D/logs/yosys.log
+python3 -I $D/filter_lib.py $S/lib/sky130_fd_sc_hd__tt_025C_1v80.lib $W/f.lib | tee $D/logs/filter_lib.log
 yosys -l $D/logs/yosys_full.log -q -p "read_liberty -lib $W/f.lib; read_verilog $(find rtl -name '*.v'|sort|tr '\n' ' ');
  hierarchy -check -top top; synth -flatten -top top; abc -liberty $W/f.lib; opt_clean; check -assert;
  tee -o $D/logs/stat.txt stat -liberty $W/f.lib; write_verilog -noattr -noexpr $D/top_sky130.v"
