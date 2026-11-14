@@ -4,3 +4,19 @@ Needs `rtl/` merged (top.v + datapath blocks). Gate set: AND/NAND/OR/NOR/XOR/XNO
 
 First result (RTL from PRs #8 + #9): 48 cells, longest path 11 cells (s[1] -> aeqb).
 TI quotes "75 equivalent gates"; counting differs (our cells include 8 MUXes and the aeqb AND tree), so treat it as a rough comparison.
+
+## sky130 layout (Leo)
+`synth/sky130/run.sh` runs the whole flow (needs `source <toolchain>/scripts/eda-env.sh`): Yosys maps `top` to `sky130_fd_sc_hd` (typical corner, `lpflow_*`/probe/delay cells filtered out by `filter_lib.py`), OpenROAD places and routes (`flow.tcl`), KLayout writes `top.gds` and `layout.png`.
+Tools: OpenROAD 2.0_3175 (2022 build), KLayout 0.30.13, sky130A PDK 1.0.471 (pins in toolchain `VERSIONS`).
+
+| Item | Result | Log |
+|------|--------|-----|
+| Cells after mapping | 44 (generic Yosys: 48) | `sky130/logs/stat.txt` |
+| Cell area | 295.3 µm² | `sky130/logs/stat.txt` |
+| Floorplan | 37.17 × 37.17 µm die, 40% target utilization, core 26.7 × 24.5 µm | `sky130/logs/openroad.log` |
+| Routed wire length | 934 µm, 354 vias, layers li1 to met4 | `sky130/logs/openroad.log` |
+| Longest path (typical corner, unconstrained) | 1.014 ns, b[0] → aeqb, 6 cells | `sky130/logs/openroad.log` |
+| Router DRC violations | 0 | `sky130/logs/route_drc.rpt` |
+
+Not done: timing closure, power, signoff DRC (KLayout/Magic) and LVS. The router's own DRC count is not a signoff. Power is met1 rails plus met4 straps, with no tap cells, which is fine for a picture and a first run but not for fabrication.
+The mapped netlist `sky130/top_sky130.v` has not yet been through the exhaustive test. That needs Beru's gate-level run with the sky130 cell models.
