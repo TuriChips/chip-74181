@@ -70,12 +70,12 @@ We also placed and routed the chip on the open sky130 process with OpenROAD, and
 | Cells after mapping | 44 | `synth/sky130/logs/stat.txt` |
 | Cell area | 295.3 µm² | `synth/sky130/logs/stat.txt` |
 | Die | 37.17 × 37.17 µm | `synth/sky130/logs/openroad.log` |
-| Routed wire length, vias | 934 µm, 354 | `synth/sky130/logs/openroad.log` |
+| Routed wire length, vias | 968 µm, 356 | `synth/sky130/logs/openroad.log` |
 | Longest path (typical corner, unconstrained) | 1.014 ns, 6 cells | `synth/sky130/logs/openroad.log` |
 | Router DRC violations | 0 (the router's own count, not a signoff) | `synth/sky130/logs/openroad.log` |
 | Gate-level check of the sky130 netlist (PDK functional cell models, Icarus): all 16,384 inputs, and the 4,194,304-input cascade | 0 mismatches, 0 X/Z | `logs/20261114T091952Z/random-gl-sky130-exhaustive-iverilog.log`, `random-gl-sky130-cascade-iverilog.log` |
 
-This is a first run, not a manufacturable layout: no timing closure, no power analysis, no signoff DRC or LVS, and no tap cells. Nothing was manufactured.
+This is a first run, not a manufacturable layout: no timing closure, no power analysis, no signoff DRC or LVS. It has 5 tap cells and no fill or decap. Nothing was manufactured.
 
 ## What went wrong along the way
 - The first draft of the spec used the wrong equations on pins 15 and 17 (it called them P̄ and Ḡ, which only applies to active-low data). Igris caught it while checking the spec against the datasheet logic diagram (`docs/spec.md` section 9).
