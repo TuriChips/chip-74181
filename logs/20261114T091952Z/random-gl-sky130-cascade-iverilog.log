@@ -1,0 +1,3 @@
+cascade: cases=4194304 mismatches=0 xz=0
+PASS
+tests/random/cascade/tb.sv:36: $finish called at 4194304000 (1ps)
