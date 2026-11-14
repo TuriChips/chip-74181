@@ -367,6 +367,6 @@ Longest topological path in top (length=11):
    10: \f [3] (via $abc$222$auto$blifparse.cc:386:parse_blif$256)
    11: \aeqb (via $abc$222$auto$blifparse.cc:386:parse_blif$259)
 
-End of script. Logfile hash: a85fe62592, CPU: user 0.04s system 0.00s, MEM: 12.82 MB peak
+End of script. Logfile hash: a85fe62592, CPU: user 0.07s system 0.01s, MEM: 12.69 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 56% 1x abc (0 sec), 11% 6x read_verilog (0 sec), ...
+Time spent: 58% 1x abc (0 sec), 11% 7x opt_expr (0 sec), ...
