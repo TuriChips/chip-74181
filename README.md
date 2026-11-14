@@ -61,7 +61,7 @@ NOT A          15,   0  ->  240  (0xf0)
 The demo is a show-and-tell, not a test. Beru checked all 8 lines against plain 8-bit arithmetic (comment on issue #7). On the subtract lines `carry-out=1` means *no borrow*. The tests above are what judge the chip.
 
 ## What went wrong along the way
-- The first draft of the spec used the wrong equations on pins 15 and 17 (it called them P̄ and Ḡ, which only applies to active-low data). Vera caught it while checking the spec against the datasheet logic diagram (`docs/spec.md` section 9).
+- The first draft of the spec used the wrong equations on pins 15 and 17 (it called them P̄ and Ḡ, which only applies to active-low data). Igris caught it while checking the spec against the datasheet logic diagram (`docs/spec.md` section 9).
 - Verification found **no RTL bugs**: the RTL matched the spec on the first run. It did find holes in the safety nets, all fixed before release: chip-74181#15 (the B8 X/Z check could never fail under 2-state Verilator; fixed by the Icarus run), toolchain#3 review (stale random logs could be attached to a new run), toolchain#10 (the chip's toolchain pin was ignored in CI), toolchain#13 (the v0.4 tag's CI actually ran v0.3).
 
 ## Not done
