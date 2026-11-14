@@ -1,0 +1,4 @@
+PASS ref-selftest
+PASS exhaustive-verilator
+PASS exhaustive-iverilog
+PASS cascade-verilator

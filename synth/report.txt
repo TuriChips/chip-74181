@@ -1,12 +1,12 @@
 
-14. Printing statistics.
+15. Printing statistics.
 
 === top ===
 
-   Number of wires:                 74
-   Number of wire bits:            131
-   Number of public wires:          34
-   Number of public wire bits:      91
+   Number of wires:                 50
+   Number of wire bits:             62
+   Number of public wires:          10
+   Number of public wire bits:      22
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
@@ -20,7 +20,7 @@
      $_OR_                           5
      $_XNOR_                         4
 
-15. Executing LTP pass (find longest path).
+16. Executing LTP pass (find longest path).
 
 Longest topological path in top (length=11):
     0: \s [1]
