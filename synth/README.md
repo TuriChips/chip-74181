@@ -14,7 +14,7 @@ Tools: OpenROAD 2.0_3175 (2022 build), KLayout 0.30.13, sky130A PDK 1.0.471 (pin
 | Cells after mapping | 44 (generic Yosys: 48) | `sky130/logs/stat.txt` |
 | Cell area | 295.3 µm² | `sky130/logs/stat.txt` |
 | Floorplan | 37.17 × 37.17 µm die, 40% target, 46% actual after 5 tap cells (302 µm² placed), core 26.7 × 24.5 µm | `sky130/logs/openroad.log` |
-| Routed wire length | 934 µm, 354 vias, layers li1 to met4 | `sky130/logs/openroad.log` |
+| Routed wire length | 968 µm, 356 vias, layers li1 to met4 | `sky130/logs/openroad.log` |
 | Longest path (typical corner, unconstrained) | 1.014 ns, b[0] → aeqb, 6 cells | `sky130/logs/openroad.log` |
 | Router DRC violations | 0 | `sky130/logs/route_drc.rpt` |
 
